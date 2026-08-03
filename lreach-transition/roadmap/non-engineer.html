@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>みんな向け lreach移行ロードマップ</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>(function(){try{var t=localStorage.getItem("lt-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+</head>
+<body data-page="roadmap-audience">
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="appbar"><div class="appbar-inner">
+  <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">LT</span><span class="brand-text">lreach transition</span></a>
+  <nav class="appnav" aria-label="主要ページ"><a href="../index.html">ホーム</a><a href="../goal/goal.html">完成像・思想</a><a href="non-engineer.html" class="is-current" aria-current="page">みんな向け</a><a href="roadmap.html">技術計画</a><a href="../migration/mapping.html">データ移管</a><a href="../database/schema.html">DBスキーマ</a><a href="../progress/2026-08-03-mon/progress.html">日次進捗</a></nav>
+  <div class="appbar-tools">
+    <div class="gamebar">
+      <span class="gpill streak" role="img" aria-label="連続 3 営業日 記録中" title="連続 3 営業日 記録中"><span class="gico" aria-hidden="true">🔥</span><b>3</b></span>
+      <span class="gpill xp" role="img" aria-label="累計の経験値 360 XP" title="ロードマップのチェック・記録した日・集めた根拠から計算した経験値"><span class="gico" aria-hidden="true">⚡</span><b>360</b></span>
+      <span class="gpill crown" role="img" aria-label="クリアしたユニット 1 個" title="完了したフェーズの数"><span class="gico" aria-hidden="true">👑</span><b>1</b></span>
+      <span class="gpill level" role="img" aria-label="レベル 4 リリースの分解者" title="リリースの分解者"><span class="gico" aria-hidden="true">🏅</span><b>Lv.4</b></span>
+    </div>
+    <a class="ghost-btn" href="non-engineer.md" title="AIが読む正本のMarkdown">MD</a>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="テーマを切り替え"><span class="theme-light-only" aria-hidden="true">🌙</span><span class="theme-dark-only" aria-hidden="true">☀</span></button>
+  </div>
+</div></header>
+<div class="shell">
+  <aside class="toc" aria-label="目次"><p class="toc-title">目次</p><ul class="toc-list"><li><a href="#sec" data-owner="sec">まずこれだけ読めばOK</a></li><li><a href="#sec-2" data-owner="sec-2">今の状態</a></li><li><a href="#sec-3" data-owner="sec-3">いつ何が変わるか</a></li><li><a href="#sec-4" data-owner="sec-4">科目の見方</a></li><li><a href="#sec-5" data-owner="sec-5">日程ごとの詳しい予定</a></li><li class="lv3"><a href="#8" data-owner="sec-5">8月4日（火）〜7日（金）— 範囲と合格条件を決める</a></li><li class="lv3"><a href="#8-2" data-owner="sec-5">8月10日（月）・12日（水）〜14日（金）— 共通データと各製品の土台をそろえる</a></li><li class="lv3"><a href="#8-3" data-owner="sec-5">8月17日（月）— 旧画面の保存先を共通データへ段階的に切り替える</a></li><li class="lv3"><a href="#8-4" data-owner="sec-5">8月18日（火）— 旧SFA画面と旧CRM画面の一日共存を確認する</a></li><li class="lv3"><a href="#8-5" data-owner="sec-5">8月19日（水）— lreach SFAの機能完成を確認する</a></li><li class="lv3"><a href="#8-6" data-owner="sec-5">8月20日（木）〜21日（金）— SFAとSFA用LINE・予約を業務担当者が受け入れ確認する</a></li><li class="lv3"><a href="#8-7" data-owner="sec-5">8月24日（月）— lreach SFAとSFA用LINE・予約を本番で使い始める</a></li><li class="lv3"><a href="#8-8" data-owner="sec-5">8月25日（火）〜26日（水）— lreach CRMの置換を業務担当者が確認する</a></li><li class="lv3"><a href="#8-9" data-owner="sec-5">8月27日（木）— lreach CRMとCRM用LINE・予約を本番で使い始める</a></li><li class="lv3"><a href="#8-10" data-owner="sec-5">8月28日（金）— 全製品をまたぐ業務と切戻しを確認する</a></li><li class="lv3"><a href="#8-11" data-owner="sec-5">8月29日（土）〜30日（日）— 休日は監視アラートだけに対応する</a></li><li class="lv3"><a href="#8-12" data-owner="sec-5">8月31日（月）— 完全移管できたかを最終判断する</a></li><li><a href="#sec-6" data-owner="sec-6">利用者への影響</a></li><li><a href="#sec-7" data-owner="sec-7">次の3つ</a></li><li><a href="#sec-8" data-owner="sec-8">事業・運用側で決めること</a></li><li><a href="#sec-9" data-owner="sec-9">予定どおり進まないとき</a></li><li><a href="#sec-10" data-owner="sec-10">用語</a></li><li><a href="#sec-11" data-owner="sec-11">情報の見分け方</a></li></ul></aside>
+  <main class="main" id="main">
+    <details class="toc-mobile"><summary>目次</summary><p class="toc-title">目次</p><ul class="toc-list"><li><a href="#sec" data-owner="sec">まずこれだけ読めばOK</a></li><li><a href="#sec-2" data-owner="sec-2">今の状態</a></li><li><a href="#sec-3" data-owner="sec-3">いつ何が変わるか</a></li><li><a href="#sec-4" data-owner="sec-4">科目の見方</a></li><li><a href="#sec-5" data-owner="sec-5">日程ごとの詳しい予定</a></li><li class="lv3"><a href="#8" data-owner="sec-5">8月4日（火）〜7日（金）— 範囲と合格条件を決める</a></li><li class="lv3"><a href="#8-2" data-owner="sec-5">8月10日（月）・12日（水）〜14日（金）— 共通データと各製品の土台をそろえる</a></li><li class="lv3"><a href="#8-3" data-owner="sec-5">8月17日（月）— 旧画面の保存先を共通データへ段階的に切り替える</a></li><li class="lv3"><a href="#8-4" data-owner="sec-5">8月18日（火）— 旧SFA画面と旧CRM画面の一日共存を確認する</a></li><li class="lv3"><a href="#8-5" data-owner="sec-5">8月19日（水）— lreach SFAの機能完成を確認する</a></li><li class="lv3"><a href="#8-6" data-owner="sec-5">8月20日（木）〜21日（金）— SFAとSFA用LINE・予約を業務担当者が受け入れ確認する</a></li><li class="lv3"><a href="#8-7" data-owner="sec-5">8月24日（月）— lreach SFAとSFA用LINE・予約を本番で使い始める</a></li><li class="lv3"><a href="#8-8" data-owner="sec-5">8月25日（火）〜26日（水）— lreach CRMの置換を業務担当者が確認する</a></li><li class="lv3"><a href="#8-9" data-owner="sec-5">8月27日（木）— lreach CRMとCRM用LINE・予約を本番で使い始める</a></li><li class="lv3"><a href="#8-10" data-owner="sec-5">8月28日（金）— 全製品をまたぐ業務と切戻しを確認する</a></li><li class="lv3"><a href="#8-11" data-owner="sec-5">8月29日（土）〜30日（日）— 休日は監視アラートだけに対応する</a></li><li class="lv3"><a href="#8-12" data-owner="sec-5">8月31日（月）— 完全移管できたかを最終判断する</a></li><li><a href="#sec-6" data-owner="sec-6">利用者への影響</a></li><li><a href="#sec-7" data-owner="sec-7">次の3つ</a></li><li><a href="#sec-8" data-owner="sec-8">事業・運用側で決めること</a></li><li><a href="#sec-9" data-owner="sec-9">予定どおり進まないとき</a></li><li><a href="#sec-10" data-owner="sec-10">用語</a></li><li><a href="#sec-11" data-owner="sec-11">情報の見分け方</a></li></ul></details>
+    <section class="hero">
+      <div class="eyebrow"><span>lreach transition</span><span aria-hidden="true">·</span><span>plain roadmap</span></div>
+      <h1>みんな向け lreach移行ロードマップ</h1>
+      <p class="hero-sub">非エンジニアでも、目的・現在地・予定・判断が分かるようにした共有ページです。進捗と日付は技術計画から自動で受け取ります。</p>
+      <div class="metarow"><span class="badge accent">事業・運用向け</span><span class="badge outline">技術計画 v18</span><span class="badge warn">条件付き日程</span></div>
+      <div class="statgrid"><div class="stat"><span class="stat-body"><span class="stat-label">いま取り組んでいること</span><span class="stat-value sm">人物一覧を使い、旧画面と新しいデータが一致するかを安全に確認する</span><span class="stat-note">実DBの安全な読取検査まで完了。旧ID 814件とtest分類74件の差、利用者権限、共有環境の自動検査、新旧比較が未完了</span></span></div><div class="stat"><span class="stat-body"><span class="stat-label">確認できた項目</span><span class="stat-value">2 <span class="stat-note" style="display:inline">/ 18</span></span><span class="stat-note">技術計画の完了証拠から自動集計</span><div class="bar"><i style="width:11%"></i></div></span></div><div class="stat"><span class="stat-body"><span class="stat-label">完了した段階</span><span class="stat-value sm">1 <span class="stat-note" style="display:inline">/ 9</span></span><span class="stat-note">技術計画と同じ進捗を表示</span></span></div><div class="stat"><span class="stat-body"><span class="stat-label">全体の目標日</span><span class="stat-value sm">2026年8月31日(月)</span><span class="stat-note">前の確認に合格した場合の条件付き目標</span></span></div></div>
+    </section>
+    <section class="pinned">
+      <h2><span aria-hidden="true">📍</span>現在地</h2>
+      <p><strong>人物一覧を使い、旧画面と新しいデータが一致するかを安全に確認する</strong></p>
+      <p class="hint">実DBの安全な読取検査まで完了。旧ID 814件とtest分類74件の差、利用者権限、共有環境の自動検査、新旧比較が未完了</p>
+      <a class="unit-btn" href="roadmap.html">技術担当向けの詳細を見る</a>
+    </section>
+    <div class="sections"><section class="sec" id="sec" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="true" aria-controls="sec-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">まずこれだけ読めばOK</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-body"><ol><li><strong>目的:</strong> 今の業務を止めずに、旧lreachから新しいlreachへ段階的に移す。</li><li><strong>現在地:</strong> 人物一覧を使い、旧画面と新しいデータが一致するかを安全に確認する。</li><li><strong>いまの判定:</strong> 実DBの安全な読取検査まで完了。旧ID 814件とtest分類74件の差、利用者権限、共有環境の自動検査、新旧比較が未完了。</li><li><strong>進める順番:</strong> 共通データを整え、営業支援と必要なLINE・予約、顧客管理と残りのLINE・予約の順に本番利用へ進める。</li><li><strong>全体の目標:</strong> 2026年8月31日(月)。ただし、前の確認に合格した場合だけ進む条件付きの日程である。</li></ol></div>
+    </section><section class="sec" id="sec-2" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="true" aria-controls="sec-2-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">今の状態</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-2-body"><div class="table-wrap"><table><thead><tr><th>区分</th><th>内容</th></tr></thead><tbody><tr><td>確認できたこと</td><td>旧SFAと旧CRMの読み取り専用検証環境を準備し、安全性を確認した</td></tr><tr><td>いま確認していること</td><td>人物一覧を使い、旧画面と新しいデータが一致するかを安全に確認する</td></tr><tr><td>まだ終わっていないこと</td><td>実データと利用者権限での確認が終わるまで、本番の保存先や画面は切り替えない</td></tr><tr><td>利用者への影響</td><td>現行業務は旧システムで継続しており、利用者向けの本番変更はまだない</td></tr></tbody></table></div>
+<p>このページの現在地、目標日、進捗数は、技術担当向けの<a href="roadmap.html">詳細ロードマップ</a>と連動している。</p></div>
+    </section><section class="sec" id="sec-3" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="true" aria-controls="sec-3-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">いつ何が変わるか</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-3-body"><div class="table-wrap"><table><thead><tr><th>条件付きの目安</th><th>現場から見た到達点</th><th>次へ進む条件</th></tr></thead><tbody><tr><td>2026年8月17日(月)</td><td>旧画面を使いながら、人物・状態・予約を新しい共通データへそろえる</td><td>データの差、権限の誤り、戻せない問題がない</td></tr><tr><td>2026年8月24日(月)</td><td>新しい営業支援画面と、営業活動に必要な予約・LINEを使い始める</td><td>流入から送客面談予約までを業務担当者が確認できる</td></tr><tr><td>2026年8月27日(木)</td><td>新しい顧客管理画面と、顧客管理側のLINE・予約を使い始める</td><td>営業支援との情報差と二重更新がない</td></tr><tr><td>2026年8月31日(月)</td><td>全体を新しいlreachで運用できるか最終判断する</td><td>重大な問題がなく、運用責任者が受け入れる</td></tr></tbody></table></div>
+<p>日付は日本時間の計画目標であり、達成保証ではない。前の確認に合格しなければ、その時点で安全に使える旧運用を維持して日程を決め直す。</p></div>
+    </section><section class="sec is-collapsed" id="sec-4" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="false" aria-controls="sec-4-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">科目の見方</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-4-body"><div class="table-wrap"><table><thead><tr><th>科目</th><th>この科目で扱うこと</th></tr></thead><tbody><tr><td>共通データ</td><td>人物、担当、状態、予約などを、どの画面から見ても同じ情報として扱えるようにする</td></tr><tr><td>lreach SFA</td><td>流入、対応キュー、架電、メモ、担当、プレ面談、送客までの営業支援業務</td></tr><tr><td>lreach LINE・予約</td><td>LINEの文面・配信・有人チャットと、プレ面談・送客面談の予約、変更、取消、通知</td></tr><tr><td>lreach CRM</td><td>人物・企業、agent、pipeline、送客後の状況、書類、TODO、messageなどの顧客管理業務</td></tr><tr><td>検証・運用</td><td>利用者確認、権限、監視、問い合わせ対応、問題時の停止・切戻し、進めるか止めるかの判定</td></tr></tbody></table></div>
+<p>各期間には複数の科目が並行している。ただし、本番で使い始める順番は「共通データ → lreach SFAとSFA用LINE・予約 → lreach CRMとCRM用LINE・予約」で変えない。</p></div>
+    </section><section class="sec is-collapsed" id="sec-5" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="false" aria-controls="sec-5-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">日程ごとの詳しい予定</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-5-body"><h3 id="8" data-toc-target>8月4日（火）〜7日（金）— 範囲と合格条件を決める</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この期間にすること</th><th>この期間の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>最初の対象を人物一覧に固定し、新旧の人物を結び付ける変更内容をレビューする。新しい開発用データで、利用者権限、表示範囲、旧ID、テスト人物、電話番号なしの扱いを確認する</td><td>旧結果を利用者へ表示したまま新旧差分を比べられ、問題時に旧経路へ明示的に戻せる</td></tr><tr><td>lreach SFA</td><td>「流入・人物 → 対応キュー → 架電・メモ・担当 → 状態管理」と「プレ面談予約 → 判定 → 送客 → 送客面談予約」の入力、出力、例外、担当を決める</td><td>移す順番と、各業務を受け入れられる条件が一枚で分かる</td></tr><tr><td>lreach LINE・予約</td><td>埋め込み文面、ID、送信時刻、URL、配信条件を洗い出し、画面で編集する設定、秘密の接続情報、旧ID対応、廃止対象に分ける。予約の作成・変更・取消・欠席・履歴の担当も決める</td><td>実送信をせずに、設定画面と予約基盤を作り始められる</td></tr><tr><td>lreach CRM</td><td>旧CRM prototype、旧CRM、ATS、企業・候補者向け画面の機能を洗い出し、新しいCRM、SFA、予約のどこへ移すかを整理する</td><td>人物・企業・送客・書類・TODOなどの責任範囲、権限、旧画面で止める更新が分かる</td></tr><tr><td>検証・運用</td><td>8月5日までに対象範囲、担当、稼働、保存前に決める事項を確認する。読み取り専用画面で、通常保存、定期処理、外部送信が止まる安全条件を8月7日まで維持する</td><td>安全条件を保ったまま、次の共通データ確認へ進める。保存先や本番送信はまだ変えない</td></tr></tbody></table></div>
+<h3 id="8-2" data-toc-target>8月10日（月）・12日（水）〜14日（金）— 共通データと各製品の土台をそろえる</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この期間にすること</th><th>この期間の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>旧データの全量と差分を新しい検証環境へ入れ、同じ時点の件数、ID、状態、予約、権限を照合する。旧SFA画面と旧CRM画面の一覧・詳細・検索・保存を、機能ごとに共通データへつなぐ</td><td>新旧の未説明差分がなく、権限違反がなく、バックアップ復元と旧経路への切戻しを実測できる</td></tr><tr><td>lreach SFA</td><td>人物、対応キュー、架電、メモ、担当、状態の順に画面・保存処理を作る。続けてプレ面談と送客面談の予約作成、変更、実施、判定を作る</td><td>旧SFA画面と新しいSFAで、件数、状態、日時、履歴、予約を同じデータで比較できる</td></tr><tr><td>lreach LINE・予約</td><td>文面設定と編集画面、空き枠、予約フォーム、作成・変更・取消、リマインダー、履歴を作る。Calendar、Meet、LINE、Slackなどへの処理が重複しないようにする</td><td>実送信なしの試験で、設定、予約、通知予定、再実行時の重複防止を確認できる</td></tr><tr><td>lreach CRM</td><td>人物・企業、agent、agent card、pipeline、送客、書類、TODO、message、calendarの試験用画面・処理・権限確認を準備する</td><td>新しいCRMの対象範囲と、SFAとの共有項目、CRMだけが更新する項目が明確になる</td></tr><tr><td>検証・運用</td><td>利用者ごとの表示範囲、認証エラー、処理遅延、重複要求、ID未対応、復元、差分再実行、切戻しを確認する</td><td>8月14日の共通データ判定（G1）に合格できる。未達なら8月17日の本番データ切替を行わない</td></tr></tbody></table></div>
+<p>8月11日（火）は山の日のため、担当者の稼働が個別に決まらない限り必須作業を置かない。</p>
+<h3 id="8-3" data-toc-target>8月17日（月）— 旧画面の保存先を共通データへ段階的に切り替える</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日にすること</th><th>この日の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>最終バックアップと差分の基準時点を固定する。旧SFA画面と旧CRM画面を、読み取りは「旧結果との比較 → 新しいデータ」、保存は業務機能ごとに新しい共通データへ切り替える</td><td>許可した機能だけが新しい共通データを更新し、対応する旧データへの更新が止まっている</td></tr><tr><td>lreach SFA</td><td>新しいSFA自体はまだ本番利用に切り替えず、共通データ上で機能完成と新旧比較を続ける</td><td>8月19日の機能完成確認へ進める</td></tr><tr><td>lreach LINE・予約</td><td>SFAに必要な案内、確認、変更、リマインダー、予約反映を検証用LINEと承認済み試験先で確認し始める</td><td>本番利用者へ広く送信せず、SFA用経路の確認を続けられる</td></tr><tr><td>lreach CRM</td><td>現場は旧CRM画面を使い続け、保存先だけを合格済みの機能から共通データへ切り替える。新しいCRMへの画面切替は行わない</td><td>旧CRM業務を止めず、SFA側と同じ人物・状態・予約を見られる</td></tr><tr><td>検証・運用</td><td>機能を一つ切り替えるたびに、件数、状態、権限、予約、LINE対象、負荷を確認する</td><td>問題があればその機能だけ旧経路へ戻せ、次の切替を止められる</td></tr></tbody></table></div>
+<h3 id="8-4" data-toc-target>8月18日（火）— 旧SFA画面と旧CRM画面の一日共存を確認する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日にすること</th><th>この日の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>実利用者が両方の旧画面で通常業務を行い、同じ人物、担当、状態、予約が見えるかを一日確認する</td><td>旧データへの予定外の保存が0件で、画面間の未説明差分が0件になる</td></tr><tr><td>lreach SFA</td><td>新しいSFAの本番利用はまだ始めず、完成作業と共通データ上の比較を続ける</td><td>旧業務を維持したまま、新しいSFAを安全に仕上げられる</td></tr><tr><td>lreach LINE・予約</td><td>SFA用の送信対象、除外、時刻、差し込み、配信停止、重複防止を検証環境で確認する</td><td>実利用者への本番送信を増やさず、SFA用経路の差分を説明できる</td></tr><tr><td>lreach CRM</td><td>旧CRM画面で許可された更新を行い、その結果が旧SFA画面側にも同じ共通データとして見えるか確認する</td><td>旧CRM業務を継続でき、同じ項目を二つの画面が同時更新していない</td></tr><tr><td>検証・運用</td><td>別組織の表示、保存失敗、遅延、切戻し、切戻し後のデータの扱いを実地確認する</td><td>8月18日の旧画面共存判定（G2）に合格できる。未達なら新しいSFAの本番化を止める</td></tr></tbody></table></div>
+<h3 id="8-5" data-toc-target>8月19日（水）— lreach SFAの機能完成を確認する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日にすること</th><th>この日の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>旧SFA画面と新しいSFAの件数、状態、権限、日時、履歴、予約を同じ共通データで最終比較する</td><td>SFA受入確認に使うデータと差分説明がそろう</td></tr><tr><td>lreach SFA</td><td>人物、キュー、架電、メモ、担当、状態、プレ面談、プレ面談予約、送客、送客面談予約の画面と保存を完成させる</td><td>合意したSFA業務を最初から最後まで試せる本番候補ができる</td></tr><tr><td>lreach LINE・予約</td><td>SFA用のLINE案内と予約経路について、失敗、再実行、緊急停止、旧経路への切戻しを確認する</td><td>8月20日から業務担当者が一連の流れを確認できる</td></tr><tr><td>lreach CRM</td><td>新しいCRMへの切替はまだ行わず、旧CRM画面がSFAの状態・予約・送客を表示できるか確認する</td><td>SFAと旧CRMの共存確認に入れる</td></tr><tr><td>検証・運用</td><td>画面、権限外、重複、失敗時の切戻しを本番候補で確認し、結果を記録する</td><td>未完了機能を残したまま受入確認へ進まない</td></tr></tbody></table></div>
+<h3 id="8-6" data-toc-target>8月20日（木）〜21日（金）— SFAとSFA用LINE・予約を業務担当者が受け入れ確認する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この期間にすること</th><th>この期間の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>SFAで更新した担当、状態、予約、送客が旧CRM画面に同じ内容で出るか確認する</td><td>SFAと旧CRMの情報差と二重更新がない</td></tr><tr><td>lreach SFA</td><td>流入から架電、プレ面談予約、面談実施・判定、送客、送客面談予約までを業務担当者が通す</td><td>日常業務として一連の流れを完了できる</td></tr><tr><td>lreach LINE・予約</td><td>プレ面談案内、確認、変更、リマインダー、予約作成、状態反映を代表ケースで確認する</td><td>対象間違い、欠落、重複がなく、停止と切戻しができる</td></tr><tr><td>lreach CRM</td><td>この期間は旧CRM画面を使用し、許可したCRM側の更新がSFAへ正しく返るか確認する</td><td>SFA本番化後も旧CRM業務を継続できる</td></tr><tr><td>検証・運用</td><td>権限なし、重複、外部サービス失敗、取消、欠席などの例外も含めて受入確認する</td><td>8月21日のSFA判定（G3）に合格できる。未達なら8月24日のSFA切替を行わない</td></tr></tbody></table></div>
+<h3 id="8-7" data-toc-target>8月24日（月）— lreach SFAとSFA用LINE・予約を本番で使い始める</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日にすること</th><th>この日の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>新旧画面の人物、担当、状態、予約、送客を同時に監視する</td><td>SFAと旧CRMが同じ共通データを安全に使える</td></tr><tr><td>lreach SFA</td><td>流入、キュー、架電、状態、プレ面談、両予約、送客の順に、一機能ずつ本番で有効にする。対応する旧SFA画面の保存を止める</td><td>有効にしたSFA機能の更新元が新しいSFA一つだけになる</td></tr><tr><td>lreach LINE・予約</td><td>SFA業務に必要な、受入済みのLINE・予約処理だけを有効にし、対応する旧処理を止める</td><td>SFA用の送信・予約処理が一系統だけで動く</td></tr><tr><td>lreach CRM</td><td>旧CRM画面で本番業務を継続する。新しいCRMへの切替はまだ行わない</td><td>新しいSFAと旧CRMが共存して通常業務を続けられる</td></tr><tr><td>検証・運用</td><td>各機能の基本動作、更新元、停止方法、切戻し担当を確認しながら次へ進む</td><td>8月24日のSFA共存判定（G4）に合格できる。未達なら新しいCRMの置換確認を始めない</td></tr></tbody></table></div>
+<h3 id="8-8" data-toc-target>8月25日（火）〜26日（水）— lreach CRMの置換を業務担当者が確認する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この期間にすること</th><th>この期間の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>旧CRM画面と新しいCRMで、同じ人物、企業、状態、送客、予約、履歴、権限、検索結果を比較する</td><td>CRM画面を替えてもSFAとの情報差がない</td></tr><tr><td>lreach SFA</td><td>本番運用を続け、SFAで作った状態、プレ面談、送客、予約が新しいCRMへ正しく見えるか確認する</td><td>SFA利用者の業務を止めずにCRM置換を確認できる</td></tr><tr><td>lreach LINE・予約</td><td>agent、送客、送客面談予約、結果、変更、欠席に関係するCRM用文面と処理を、検証用LINEと承認済み試験先で通す</td><td>CRM用の送信・予約処理を本番切替前に再現できる</td></tr><tr><td>lreach CRM</td><td>人物・企業、agent card、pipeline、送客、書類、TODO、messageなどを新しいCRMで実行し、旧CRM画面と結果を比べる</td><td>主要業務、権限、通知、履歴、検索、切戻しの置換確認が合格する</td></tr><tr><td>検証・運用</td><td>旧CRMの更新停止、新しいCRMの更新開始、CRM用LINE・予約の切替、旧画面への切戻しを検証環境で予行する</td><td>8月27日の本番切替を安全に実施できる手順と担当がそろう</td></tr></tbody></table></div>
+<h3 id="8-9" data-toc-target>8月27日（木）— lreach CRMとCRM用LINE・予約を本番で使い始める</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日にすること</th><th>この日の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>CRM機能を一つ切り替えるたびに、SFAとの人物、担当、状態、送客、予約、権限を確認する</td><td>SFAとCRMが同じ共通データを使い続けられる</td></tr><tr><td>lreach SFA</td><td>本番運用を継続し、CRM切替中の状態・送客・予約の反映を監視する</td><td>CRM切替によってSFA業務が止まらない</td></tr><tr><td>lreach LINE・予約</td><td>CRM業務に必要な受入済み処理を新しい仕組みへ切り替え、旧Webhook、Bot、定期処理、通知元を止める</td><td>CRM用の送信・予約処理が一系統だけで動く</td></tr><tr><td>lreach CRM</td><td>旧CRM画面の保存を機能単位で止め、新しいCRMを一つずつ有効にする</td><td>合格したCRM業務の更新元が新しいCRM一つだけになる</td></tr><tr><td>検証・運用</td><td>切替ごとに基本動作を確認し、異常時は次の切替を止めて該当機能だけ旧CRMへ戻す</td><td>8月27日のCRM・LINE判定（G5）に合格できる。未達なら旧CRMを継続して再計画する</td></tr></tbody></table></div>
+<h3 id="8-10" data-toc-target>8月28日（金）— 全製品をまたぐ業務と切戻しを確認する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日にすること</th><th>この日の出口</th></tr></thead><tbody><tr><td>共通データ</td><td>新規、再流入、重複、権限なし、別組織、変更、取消、欠席、外部サービス失敗を確認する</td><td>旧データへの保存、旧画面からの更新、旧送信処理が0件になる</td></tr><tr><td>lreach SFA</td><td>LINEから入った人物を受け、プレ面談、判定、送客まで進める</td><td>SFAの本番業務が次のCRM業務へ正しくつながる</td></tr><tr><td>lreach LINE・予約</td><td>流入時のLINE、プレ面談予約、送客面談予約、変更・取消・通知を通す</td><td>欠落・重複なく、SFAとCRMの状態へ一度だけ反映される</td></tr><tr><td>lreach CRM</td><td>SFAから受けた送客を処理し、送客面談予約から着座まで進める</td><td>CRMの本番業務が一連の流れを完了できる</td></tr><tr><td>検証・運用</td><td>「LP／Form → LINE → SFA → プレ面談予約 → 送客 → CRM → 送客面談予約 → 着座」を通し、バックアップ復元、機能別切戻し、再処理を訓練する</td><td>全製品の一連確認と切戻し訓練の結果が記録される</td></tr></tbody></table></div>
+<h3 id="8-11" data-toc-target>8月29日（土）〜30日（日）— 休日は監視アラートだけに対応する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この期間にすること</th><th>この期間の出口</th></tr></thead><tbody><tr><td>全科目共通</td><td>新しい変更や必須の手作業は置かず、重大な監視アラートが出た場合だけ対応する</td><td>週末作業の有無を完全移管の条件にせず、8月31日の確認へ進める</td></tr></tbody></table></div>
+<h3 id="8-12" data-toc-target>8月31日（月）— 完全移管できたかを最終判断する</h3>
+<div class="table-wrap"><table><thead><tr><th>科目</th><th>この日に確認すること</th><th>完了と言える状態</th></tr></thead><tbody><tr><td>共通データ</td><td>件数、状態、予約、権限、エラー、遅延と、旧データへの保存がないことを証拠で確認する</td><td>新しい共通データが正しい情報源で、旧データへの業務保存が0件である</td></tr><tr><td>lreach SFA</td><td>流入、キュー、架電、状態、プレ面談、両予約、送客を実利用で確認する</td><td>合意したSFA業務を新しいSFAで完了できる</td></tr><tr><td>lreach LINE・予約</td><td>受信、有人チャット、配信、シナリオ、Bot、定期処理、両予約の担当が一系統であることを確認する</td><td>送信・予約の欠落と重複がなく、緊急停止と切戻しができる</td></tr><tr><td>lreach CRM</td><td>合意したCRM業務とSFA連携を確認し、旧CRM画面の業務保存が止まっていることを確認する</td><td>新しいCRMで業務を完了でき、旧CRMの更新元が0件である</td></tr><tr><td>検証・運用</td><td>利用者受入、重大問題、問い合わせ、監視、復元、切戻し、責任者承認を確認する</td><td>すべて合格した場合だけ「完全移管」と判断する。一つでも未達なら旧運用または直前の合格状態を維持し、残作業と新しい日付を決める</td></tr></tbody></table></div></div>
+    </section><section class="sec" id="sec-6" data-tone="impact" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="true" aria-controls="sec-6-body">
+        <span class="sec-icon" aria-hidden="true">🔗</span>
+        <span class="sec-title">利用者への影響</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-6-body"><ul><li>現在の業務は旧システムで続ける。本番の画面や保存先はまだ切り替えない。</li><li>検証中は、通常の保存、定期実行、LINEやメールなどの外部送信を止めた環境を使う。</li><li>本番切替は機能ごとに行い、確認してから次へ進む。異常があれば、その機能だけ元へ戻す。</li><li>同じ情報を二つの画面から同時に更新しない。送信や予約処理も、一つの仕組みだけが担当する。</li></ul></div>
+    </section><section class="sec" id="sec-7" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="true" aria-controls="sec-7-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">次の3つ</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-7-body"><ol><li>新しいデータに不足する旧ID 814件を既存の移管経路で補い、再検査する。</li><li>test分類漏れ74件を確認し、別workspaceと空電話の検査データも用意する。</li><li>利用者ごとの権限接続と共有環境の自動検査を通してから、新旧比較を行う。</li></ol>
+<p>この3件は本番切替ではなく、安全に比較するための準備と確認である。</p></div>
+    </section><section class="sec is-collapsed" id="sec-8" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="false" aria-controls="sec-8-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">事業・運用側で決めること</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-8-body"><ul><li>人物が「流入」「面談」「送客」「着座」へ進む正式な状態名と、各状態を変更できる担当。</li><li>新しい営業支援と顧客管理へ移す業務範囲、予約・LINEを動かす責任者、旧画面へ残す業務。</li><li>本番変更の時間、確認に参加する人、進めるか止めるかを最終判断する人。</li></ul>
+<p>決まっていない項目があっても、影響しない調査や画面準備は並行して進める。保存や外部送信に関わる項目は、合意するまで有効にしない。</p></div>
+    </section><section class="sec is-collapsed" id="sec-9" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="false" aria-controls="sec-9-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">予定どおり進まないとき</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-9-body"><ul><li>日付より安全確認を優先し、未確認のまま次の段階へ進まない。</li><li>直前まで合格していた運用を維持し、残っている作業、担当、新しい目標日を記録する。</li><li>一部だけ終わった状態を「完全移管」と呼ばない。</li></ul></div>
+    </section><section class="sec is-collapsed" id="sec-10" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="false" aria-controls="sec-10-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">用語</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-10-body"><div class="table-wrap"><table><thead><tr><th>用語</th><th>このページでの意味</th></tr></thead><tbody><tr><td>旧lreach</td><td>現在の業務で使っている既存システム</td></tr><tr><td>新しいlreach</td><td>移管先のNeo側にある営業支援、顧客管理、LINE、予約の仕組み</td></tr><tr><td>共通データ</td><td>どの画面から見ても同じ人物・状態・予約として扱える一つの情報</td></tr><tr><td>営業支援（SFA）</td><td>担当者が流入、架電、面談、送客までを進めるための画面</td></tr><tr><td>顧客管理（CRM）</td><td>人物・企業・送客後の状況を管理するための画面</td></tr><tr><td>受入確認</td><td>業務担当者が実際の流れを試し、日常業務で使えると判断すること</td></tr><tr><td>切戻し</td><td>問題が起きた機能を、直前に安全だった使い方へ戻すこと</td></tr></tbody></table></div></div>
+    </section><section class="sec is-collapsed" id="sec-11" data-tone="plain" data-tasks="0" data-toc-target>
+      <h2 class="sec-head-wrap"><button class="sec-head" type="button" aria-expanded="false" aria-controls="sec-11-body">
+        <span class="sec-icon" aria-hidden="true">📄</span>
+        <span class="sec-title">情報の見分け方</span>
+        <span class="sec-meta"></span>
+        <span class="caret" aria-hidden="true">▾</span>
+      </button></h2>
+      <div class="sec-body" id="sec-11-body"><ul><li><strong>確認済み:</strong> 証拠があり、完了条件を満たしたもの。</li><li><strong>条件付き計画:</strong> 前の確認に合格した場合の予定。未達なら延期する。</li><li><strong>未決:</strong> 事業・運用・技術の担当者による判断が必要なもの。</li></ul>
+<p>最終更新は2026年8月4日(火)。実装範囲、停止条件、証拠は<a href="roadmap.html">技術担当向けの詳細ロードマップ</a>で確認できる。最新の日次進捗は<a href="../index.html">管理ホーム</a>から開く。</p></div>
+    </section></div>
+    <footer class="pagefoot">
+      <span>正本: <code>roadmap/non-engineer.md</code></span>
+      <span>このHTMLは<code>./lt render</code>で自動生成した閲覧用ビューです</span>
+      <span>Asia/Tokyo</span>
+      <span>現在地・目標日・進捗の正本は <code>roadmap/roadmap.md</code></span>
+    </footer>
+  </main>
+</div>
+
+<script src="../assets/app.js"></script>
+
+</body>
+</html>
